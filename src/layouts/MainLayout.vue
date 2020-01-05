@@ -1,5 +1,7 @@
 <template>
-    <div class="app-main-layout">
+  <div>
+    <Loader v-if="loading"/>
+    <div class="app-main-layout" v-else>
       <Navbar @hideOrOpenSidebar="isOpen = !isOpen"/>
       <Sidebar v-model="isOpen"/>
       <main class="app-content" :class="{full: !isOpen}">
@@ -14,6 +16,7 @@
         </router-link>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -24,8 +27,17 @@ export default {
   components: {
     Navbar, Sidebar
   },
+  async mounted () {
+    // все асинхронные запросы должны делаться тут (mounted)
+    // к этому времени  уже html дерево готово
+    if (!Object.keys(this.$store.getters.info).length) {
+      await this.$store.dispatch('fetchInfo')
+    }
+    this.loading = false
+  },
   data: () => ({
-    isOpen: true
+    isOpen: true,
+    loading: true
   })
 }
 </script>
