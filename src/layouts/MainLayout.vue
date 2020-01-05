@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <Loader v-if="loading"/>
-    <div class="app-main-layout" v-else>
+    <div class="app-main-layout">
       <Navbar @hideOrOpenSidebar="isOpen = !isOpen"/>
       <Sidebar v-model="isOpen"/>
       <main class="app-content" :class="{full: !isOpen}">
@@ -16,7 +14,6 @@
         </router-link>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -33,7 +30,7 @@ export default {
     if (!Object.keys(this.$store.getters.info).length) {
       await this.$store.dispatch('fetchInfo')
     }
-    this.loading = false
+    this.$store.commit('setBillLoading', false)
   },
   data: () => ({
     isOpen: true,

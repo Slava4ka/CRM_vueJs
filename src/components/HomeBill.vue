@@ -3,15 +3,18 @@
     <div class="card light-blue bill-card">
       <div class="card-content white-text">
         <span class="card-title">Счет в валюте</span>
-        <p
-          v-for="cur of currencies"
-          :key="cur"
-          class="currency-line"
-        >
+        <Loader v-if="this.$store.getters.billLoading"/>
+        <div v-else>
+          <p
+            v-for="cur of currencies"
+            :key="cur"
+            class="currency-line"
+          >
           <span>
             {{getCurrency(cur) | currency(cur)}}
           </span>
-        </p>
+          </p>
+        </div>
       </div>
     </div>
   </div>

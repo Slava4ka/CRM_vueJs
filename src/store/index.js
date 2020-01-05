@@ -7,7 +7,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    error: null
+    error: null,
+    billLoading: true
   },
   mutations: {
     setError (state, error) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     clearError (state) {
       state.error = null
+    },
+    setBillLoading (state, status) {
+      state.billLoading = status
     }
   },
   actions: {
@@ -26,7 +30,8 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    error: s => s.error
+    error: s => s.error,
+    billLoading: b => b.billLoading
   },
   modules: {
     auth, info
