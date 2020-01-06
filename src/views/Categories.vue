@@ -5,82 +5,31 @@
     </div>
     <section>
       <div class="row">
-        <div class="col s12 m6">
-          <div>
-            <div class="page-subtitle">
-              <h4>Создать</h4>
-            </div>
-
-            <form>
-              <div class="input-field">
-                <input
-                  id="Create_name"
-                  type="text"
-                >
-                <label for="Create_name">Название</label>
-                <span class="helper-text invalid">Введите название</span>
-              </div>
-
-              <div class="input-field">
-                <input
-                  id="Create_limit"
-                  type="number"
-                >
-                <label for="Create_limit">Лимит</label>
-                <span class="helper-text invalid">Минимальная величина</span>
-              </div>
-
-              <button class="btn waves-effect waves-light" type="submit">
-                Создать
-                <i class="material-icons right">send</i>
-              </button>
-            </form>
-          </div>
-        </div>
-        <div class="col s12 m6">
-          <div>
-            <div class="page-subtitle">
-              <h4>Редактировать</h4>
-            </div>
-
-            <form>
-              <div class="input-field" >
-                <select>
-                  <option>Category</option>
-                </select>
-                <label>Выберите категорию</label>
-              </div>
-
-              <div class="input-field">
-                <input type="text" id="Edit_name">
-                <label for="Edit_name">Название</label>
-                <span class="helper-text invalid">TITLE</span>
-              </div>
-
-              <div class="input-field">
-                <input
-                  id="Edit_limit"
-                  type="number"
-                >
-                <label for="Edit_limit">Лимит</label>
-                <span class="helper-text invalid">LIMIT</span>
-              </div>
-
-              <button class="btn waves-effect waves-light" type="submit">
-                Обновить
-                <i class="material-icons right">send</i>
-              </button>
-            </form>
-          </div>
-        </div>
+        <CategoryCreate @created="addNewCategory"/>
+        <CategoryEdit/>
       </div>
     </section>
   </div>
 </template>
 
 <script>
+import CategoryCreate from '../components/CategoryCreate'
+import CategoryEdit from '../components/CategoryEdit'
+
 export default {
-  name: 'Categories'
+  name: 'Categories',
+  data: () => ({
+    categories: []
+  }),
+  components: {
+    CategoryCreate, CategoryEdit
+  },
+  methods: {
+    addNewCategory (category) {
+      this.categories.push(category)
+      console.log(this.categories)
+    }
+  }
 }
 </script>
 
