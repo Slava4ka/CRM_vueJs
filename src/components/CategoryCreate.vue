@@ -8,12 +8,12 @@
       <form v-on:submit.prevent="submitHandler">
         <div class="input-field">
           <input
-            id="name"
+            id="CategoryCreate_name"
             type="text"
             v-model="title"
             :class="{invalid: $v.title.$dirty && !$v.title.required}"
           >
-          <label for="name">Название</label>
+          <label for="CategoryCreate_name">Название</label>
           <span
             v-if="$v.title.$dirty && !$v.title.required"
             class="helper-text invalid"
@@ -25,12 +25,12 @@
         <div class="input-field">
           <!-- limit.number приводит к числу модель -->
           <input
-            id="Create_limit"
+            id="CategoryCreate_limit"
             type="number"
             v-model.number="limit"
             :class="{invalid: $v.limit.$dirty && !$v.limit.minValue}"
           >
-          <label for="Create_limit">Лимит</label>
+          <label for="CategoryCreate_limit">Лимит</label>
           <span
             v-if="$v.limit.$dirty && !$v.limit.minValue"
             class="helper-text invalid"
@@ -62,6 +62,7 @@ export default {
   mounted () {
     // eslint-disable-next-line no-undef
     M.updateTextFields()
+    // нужно для корректного отображения значений по умолчанию. Чтоб label на налезал
   },
   methods: {
     async submitHandler () {
