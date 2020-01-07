@@ -19,10 +19,24 @@
 <script>
 import Navbar from '../components/app/Navbar'
 import Sidebar from '../components/app/Sidebar'
+import messages from '../common/messages'
+
 export default {
   name: 'MainLayout',
   components: {
     Navbar, Sidebar
+  },
+  computed: {
+    error () {
+      return this.$store.getters.error
+    }
+  },
+  watch: {
+    error (fbError) {
+      console.log(fbError)
+      // обращаюсь к методу в message.plugin
+      this.$error(messages[fbError.code] || fbError.message)
+    }
   },
   async mounted () {
     // все асинхронные запросы должны делаться тут (mounted)

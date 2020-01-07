@@ -2,7 +2,8 @@
   <div>
     <div class="page-title">
       <h3>Планирование</h3>
-      <h4>{{info.bill | currency('RUB')}}</h4>
+      <h4 v-if="!info.bill"></h4>
+      <h4 v-else>{{info.bill | currency('RUB')}}</h4>
     </div>
 
     <Loader v-if="loading"/>
