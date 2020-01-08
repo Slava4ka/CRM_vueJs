@@ -50,8 +50,8 @@ export default {
       categoryName: category.title
       // это должно быть тут. Так же все что связано с фильтрами тоже. Чтоб не засорять шаблон
       // но на этой странице так сделано для примера. В продакшен нужгол все вычислять туточки
-      //          'red' : record.type === 'outcome',
-      //          'green' : record.type === 'income'
+      // 'red' : record.type === 'outcome',
+      // 'green' : record.type === 'income'
     }
 
     this.loading = false

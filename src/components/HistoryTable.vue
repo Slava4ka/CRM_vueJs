@@ -13,10 +13,10 @@
 
     <tbody>
     <tr v-for="(rec, idx) in records" :key="rec.id">
-      <td>{{idx+1}}</td>
-      <td>{{rec.amount | currency('RUB')}}</td>
-      <td>{{rec.date | date('dateTime')}}</td>
-      <td>{{rec.categoryName}}</td>
+      <td>{{ idx+1+(page-1)*pageSize }}</td>
+      <td>{{ rec.amount | currency('RUB') }}</td>
+      <td>{{ rec.date | date('dateTime') }}</td>
+      <td>{{ rec.categoryName }}</td>
       <td>
         <span
           :class="[rec.typeClass]"
@@ -46,7 +46,9 @@ export default {
     records: {
       required: true,
       type: Array
-    }
+    },
+    page: Number,
+    pageSize: Number
   }
 }
 </script>
