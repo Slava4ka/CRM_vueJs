@@ -1,4 +1,5 @@
 // Элегантный способ создания всплывающих окон (тултипов), который предоставляет vue
+import localizeFilter from '../filters/localize.filter'
 
 export default {
 // эта функция будет вызвана, когда тултип будет проходит инициализацию
@@ -8,10 +9,12 @@ export default {
    * @param value - некий объект с полем value. Его будем добавлять в директиву
    * @param arg
    */
-  bind (el, { value, arg }) {
+  bind (el, { value, arg, modifiers }) {
     const position = arg || 'bottom'
     // eslint-disable-next-line no-undef
-    M.Tooltip.init(el, { html: value, position: position })
+    M.Tooltip.init(el, {
+      html: modifiers.noloc ? value : localizeFilter(value),
+      position: position })
   },
   // метод для удаления толтипа. Нужен при смерти компонента, использующего его.
   // Предотвращает утечку памяти и наличие лишнего html кода

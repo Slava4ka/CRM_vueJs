@@ -24,12 +24,17 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async fetchCurrency () {
-      // получает с стороннего сервиса текущий курс валют
-      const key = process.env.VUE_APP_FIXER
-      const res = await fetch(`http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`)
-      // await
-      return res.json()
+    async fetchCurrency ({ commit }) {
+      try {
+        // получает с стороннего сервиса текущий курс валют
+        const key = process.env.VUE_APP_FIXER
+        const res = await fetch(`http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`)
+        // await
+        return res.json()
+      } catch (e) {
+        commit('setError', e)
+        throw e
+      }
     }
   },
   getters: {
