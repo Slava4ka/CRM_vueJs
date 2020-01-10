@@ -67,5 +67,6 @@
   "WrongPassword": "Invalid password",
   "EmailInUse": "Email is already in use",
   "Error": "Error",
-  "notFound": "not found"
+  "notFound": "not found",
+  "Delete": "delete"
 }

@@ -51,10 +51,16 @@
           </span>
         </div>
 
-        <button class="btn waves-effect waves-light" type="submit">
+        <button class="btn waves-effect waves-light" type="submit" value="update" v-on:click="updateHandler">
           {{'Update' | localize}}
           <i class="material-icons right">send</i>
         </button>
+
+        <button class="btn waves-effect waves-light red ml" value="delete" v-on:click="deleteHandler">
+          {{'Delete' | localize}}
+          <i class="material-icons right">delete_forever</i>
+        </button>
+
       </form>
     </div>
   </div>
@@ -80,6 +86,9 @@ export default {
   }),
   methods: {
     async submitHandler () {
+      console.log('submit')
+    },
+    async updateHandler () {
       if (this.$v.$invalid) {
         this.$v.$touch()
         return
@@ -91,9 +100,22 @@ export default {
           limit: this.limit
         }
         await this.$store.dispatch('updateCategory', categoryData)
+        this.$emit('updated', 'update', categoryData)
         this.$message('Категория успешно обновлена')
-        this.$emit('updated', categoryData)
       } catch (e) {}
+    },
+    async deleteHandler () {
+      console.log('deleteHandler')
+      try {
+        const id = this.current
+        const categoryForDelete = await this.$store.dispatch('fetchCategoryById', id)
+        await this.$store.dispatch('deleteCategory', id)
+        this.$emit('updated', 'delete', categoryForDelete)
+        this.$message(`Категория ${categoryForDelete.title} успешно удалена`)
+      } catch (e) {
+        this.message(`[Ошибка при удалении]: ${e}`)
+        throw e
+      }
     }
   },
   validations: {
@@ -135,5 +157,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .ml{
+    margin-left: 10px;
+  }
 </style>

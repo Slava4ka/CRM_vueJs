@@ -8,10 +8,10 @@
       <div v-else class="row">
         <CategoryCreate @created="addNewCategory"/>
         <CategoryEdit
-        v-if="categories.length"
-        :categories="categories"
-        :key="categories.length + updateCount"
-        @updated="updateCategories"
+          v-if="categories.length"
+          :categories="categories"
+          :key="categories.length + updateCount"
+          @updated="updateCategories"
         />
         <p v-else class="center">
           {{'NoCategories' | localize}}
@@ -46,12 +46,18 @@ export default {
       this.categories.push(category)
       // console.log(this.categories)
     },
-    updateCategories (category) {
+    updateCategories (actionType, category) {
       const idx = this.categories.findIndex(c => c.id === category.id)
-      this.categories[idx].title = category.title
-      this.categories[idx].limit = category.limit
+      if (actionType === 'update' && idx !== -1) {
+        this.categories[idx].title = category.title
+        this.categories[idx].limit = category.limit
+      } else if (actionType === 'delete' && idx !== -1) {
+        this.categories.splice(idx, 1)
+      } else {
+        this.$message('Ошибка при обновлении списка категорий')
+      }
       // перерисовываем компоненту
-      this.updateCount += 1
+      this.updateCount += 1.01
     }
   }
 }

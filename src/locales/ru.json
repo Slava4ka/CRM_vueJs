@@ -68,5 +68,6 @@
   "WrongPassword": "Неверный пароль",
   "EmailInUse": "Email уже занят",
   "Error": "Ошибка",
-  "notFound": "не найдена"
+  "notFound": "не найдена",
+  "Delete": "удалить"
 }
