@@ -70,7 +70,6 @@ export default {
         this.$v.$touch()
         return
       }
-      console.log('Some server code')
       try {
         const category = await this.$store.dispatch('createCategory', {
           title: this.title,

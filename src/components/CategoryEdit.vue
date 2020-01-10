@@ -86,7 +86,6 @@ export default {
   }),
   methods: {
     async submitHandler () {
-      console.log('submit')
     },
     async updateHandler () {
       if (this.$v.$invalid) {
@@ -105,7 +104,6 @@ export default {
       } catch (e) {}
     },
     async deleteHandler () {
-      console.log('deleteHandler')
       try {
         const id = this.current
         const categoryForDelete = await this.$store.dispatch('fetchCategoryById', id)

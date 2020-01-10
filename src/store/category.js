@@ -41,7 +41,6 @@ export default {
       }
     },
     async deleteCategory ({ commit, dispatch }, id) {
-      console.log('id ' + id)
       try {
         const userId = await dispatch('getUserId')
         await firebase.database().ref(`/users/${userId}/categories`)

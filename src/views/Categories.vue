@@ -38,7 +38,6 @@ export default {
   }),
   async mounted () {
     this.categories = await this.$store.dispatch('fetchCategories')
-    console.log('categories', this.categories)
     this.loading = false
   },
   components: {
@@ -47,7 +46,6 @@ export default {
   methods: {
     addNewCategory (category) {
       this.categories.push(category)
-      // console.log(this.categories)
     },
     updateCategories (actionType, category) {
       const idx = this.categories.findIndex(c => c.id === category.id)

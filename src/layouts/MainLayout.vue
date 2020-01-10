@@ -38,7 +38,6 @@ export default {
   },
   watch: {
     error (fbError) {
-      console.log(fbError)
       // обращаюсь к методу в message.plugin
       this.$error(messages[fbError.code] || fbError.message)
     }

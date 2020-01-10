@@ -85,8 +85,6 @@ export default {
         ...c, progressPercent, progressColor, spend, tooltip
       }
     })
-
-    console.log(this.categories)
     this.loading = false
   }
 }

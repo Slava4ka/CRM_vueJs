@@ -27,10 +27,10 @@ export default new Vuex.Store({
     async fetchCurrency ({ commit }) {
       try {
         // получает с стороннего сервиса текущий курс валют
-        const key = process.env.VUE_APP_FIXER
-        const res = await fetch(`http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`)
-        // await
-        return res.json()
+        // const key = process.env.VUE_APP_FIXER
+        // const res = await fetch(`http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`)
+        const res = await fetch(`https://api.exchangerate-api.com/v4/latest/EUR`)
+        return await res.json()
       } catch (e) {
         commit('setError', e)
         throw e
