@@ -13,7 +13,7 @@
 }
 
 .auth-card {
-    width: 500px
+    width: auto;
 }
 
 .auth-submit {
@@ -80,7 +80,6 @@
 
 .app-content {
     padding-top: 64px;
-    padding-left: 250px;
     transition: padding-left .3s;
     position: relative
 }
@@ -176,4 +175,16 @@
 .history-chart {
     max-width: 600px;
     margin: 0 auto
+}
+
+@media screen and (min-width: 501px) {
+    .auth-card {
+        width: 500px
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .app-content {
+        padding-left: 250px;
+    }
 }

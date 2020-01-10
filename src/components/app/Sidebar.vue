@@ -31,5 +31,7 @@ export default {
 </script>
 
 <style scoped>
-
+.sidenav{
+  z-index: 999;
+}
 </style>

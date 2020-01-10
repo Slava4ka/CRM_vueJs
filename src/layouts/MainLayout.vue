@@ -54,7 +54,7 @@ export default {
     this.$store.commit('setBillLoading', false)
   },
   data: () => ({
-    isOpen: true,
+    isOpen: document.documentElement.clientWidth >= 800,
     loading: true
   })
 }
