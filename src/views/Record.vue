@@ -95,6 +95,9 @@ import { mapGetters } from 'vuex'
 import localizeFilter from '../filters/localize.filter'
 export default {
   name: 'Record',
+  metaInfo () {
+    return { title: this.$title('Menu_NewRecord') }
+  },
   data: () => ({
     select: null,
     loading: true,

@@ -47,6 +47,10 @@ import { required } from 'vuelidate/lib/validators'
 
 export default {
   name: 'Profile',
+  // функция для того чтоб title обновлялся при смене языка
+  metaInfo () {
+    return { title: this.$title('ProfileTitle') }
+  },
   data: () => ({
     loading: true,
     name: '',
